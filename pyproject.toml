@@ -5,9 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "sfu-api>=0.1.4",
-    "tqdm>=4.66.5",
-    "typer>=0.12.5",
+ "rich>=13.8.1",
+ "sfu-api",
+ "tqdm>=4.66.5",
+ "typer>=0.12.5",
 ]
 
 [project.scripts]
@@ -16,3 +17,6 @@ app = "sfu_day_finder:app"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.uv.sources]
+sfu-api = { path = '..\SFU_API_client', editable = true }

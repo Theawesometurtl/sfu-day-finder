@@ -225,15 +225,23 @@ wheels = [
 
 [[package]]
 name = "sfu-api"
-version = "0.1.4"
-source = { registry = "https://pypi.org/simple" }
+version = "0.1.5"
+source = { editable = "../SFU_API_client" }
 dependencies = [
     { name = "httpx" },
     { name = "pydantic", extra = ["email"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/64/37/f1fd51d8c3aa4c6782f498a2e97697532b820abc82e7b15537b877511127/sfu_api-0.1.4.tar.gz", hash = "sha256:9d9af15cc8efc4853d33db67fbd18f2ed7b48b85968f085a79c7a8be4e6e5fd3", size = 13627 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/02/91/6eb9be8c2eb0b3aa0aa271b1915c294c9165c639b087917dd4f3f4e0a576/sfu_api-0.1.4-py3-none-any.whl", hash = "sha256:de7dda09686d857c8e7dc3a8f56f5f6b38e5d8c3e974fac84a654d7a275f9acf", size = 5830 },
+
+[package.metadata]
+requires-dist = [
+    { name = "httpx", specifier = ">=0.27.2" },
+    { name = "pydantic", extras = ["email"], specifier = ">=2.9.2" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "devtools", specifier = ">=0.12.2" },
+    { name = "pytest", specifier = ">=8.3.3" },
 ]
 
 [[package]]
@@ -241,6 +249,7 @@ name = "sfu-day-finder"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "rich" },
     { name = "sfu-api" },
     { name = "tqdm" },
     { name = "typer" },
@@ -248,7 +257,8 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "sfu-api", specifier = ">=0.1.4" },
+    { name = "rich", specifier = ">=13.8.1" },
+    { name = "sfu-api", editable = "../SFU_API_client" },
     { name = "tqdm", specifier = ">=4.66.5" },
     { name = "typer", specifier = ">=0.12.5" },
 ]
